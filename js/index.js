@@ -37,6 +37,96 @@ const siteContent = {
   },
 };
 
+////HEADER AND UPPER SECTION
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+
+//Add titles to the Nav
+const navigationLinks = document.querySelectorAll("nav a")
+
+const navLinksText = [];
+
+for (const property in siteContent.nav) {
+  if (property.includes("nav")) {
+    navLinksText.push(siteContent.nav[property])
+  }
+}
+
+navLinksText.forEach ((text,idx)=> {
+  navigationLinks[idx].innerHTML = text
+})
+
+
+//add the h1
+const title = document.querySelector("h1");
+title.innerHTML = siteContent.cta.h1;
+
+//add the top section button
+const topButton = document.querySelector("button");
+topButton.textContent = siteContent.cta.button;
+
+//add the top section image
+const topImage = document.getElementById("cta-img");
+topImage.src = siteContent["cta"]["img-src"]
+
+
+////MIDDLE SECTION: MAIN CONTENT
+//Do the titles
+const middleTitles = document.querySelectorAll(".main-content h4");
+const middleTitlesText = [];
+
+for (const property in siteContent["main-content"]) {
+  if (property.includes("h4")) {
+    middleTitlesText.push(siteContent["main-content"][property])
+  }
+}
+
+middleTitlesText.forEach ((text,idx)=> {
+  middleTitles[idx].innerHTML = text
+})
+
+//Do the paragraph text under each title
+const middlePs = document.querySelectorAll(".main-content p");
+const middlePsText = [];
+
+for (const property in siteContent["main-content"]) {
+  if (property.includes("content")) {
+    middlePsText.push(siteContent["main-content"][property])
+  }
+}
+
+middlePsText.forEach ((text,idx)=> {
+  middlePs[idx].innerHTML = text
+})
+
+//Do the middle section image
+const middleimage = document.getElementById("middle-img")
+middleimage.setAttribute("src", siteContent["main-content"]["middle-img-src"])
+
+////DO THE CONTACT SECTION
+//add the title
+const contactHeader = document.querySelector(".contact h4")
+contactHeader.textContent=siteContent.contact["contact-h4"]
+
+//Add the paragpraphs
+const contactPs = document.querySelectorAll(".contact p")
+const contactPsText = [];
+
+for (const property in siteContent["contact"]) {
+  if (property.includes("h4")) {
+    contactHeader.textContent=siteContent.contact[property]
+  } else {
+    contactPsText.push(siteContent.contact[property])
+  }
+}
+
+contactPsText.forEach((text,idx)=> {
+  contactPs[idx].textContent=text
+})
+
+////DO THE FOOTER
+const footerContent = document.querySelector("footer")
+
+footerContent.textContent=siteContent.footer.copyright;
