@@ -74,7 +74,7 @@ topImage.src = siteContent["cta"]["img-src"]
 
 ////MIDDLE SECTION: MAIN CONTENT
 //Do the titles
-const middleTitles = document.querySelectorAll("h4");
+const middleTitles = document.querySelectorAll(".main-content h4");
 const middleTitlesText = [];
 
 for (const property in siteContent["main-content"]) {
@@ -104,3 +104,29 @@ middlePsText.forEach ((text,idx)=> {
 //Do the middle section image
 const middleimage = document.getElementById("middle-img")
 middleimage.setAttribute("src", siteContent["main-content"]["middle-img-src"])
+
+////DO THE CONTACT SECTION
+//add the title
+const contactHeader = document.querySelector(".contact h4")
+contactHeader.textContent=siteContent.contact["contact-h4"]
+
+//Add the paragpraphs
+const contactPs = document.querySelectorAll(".contact p")
+const contactPsText = [];
+
+for (const property in siteContent["contact"]) {
+  if (property.includes("h4")) {
+    contactHeader.textContent=siteContent.contact[property]
+  } else {
+    contactPsText.push(siteContent.contact[property])
+  }
+}
+
+contactPsText.forEach((text,idx)=> {
+  contactPs[idx].textContent=text
+})
+
+////DO THE FOOTER
+const footerContent = document.querySelector("footer")
+
+footerContent.textContent=siteContent.footer.copyright;
